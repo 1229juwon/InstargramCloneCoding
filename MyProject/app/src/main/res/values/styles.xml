@@ -12,5 +12,11 @@
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
     </style>
+    
+    <style name="DialogTheme" parent="Theme.AppCompat.Light.Dialog">
+
+        <item name="colorAccent">@color/black</item>
+
+    </style>
 
 </resources>
