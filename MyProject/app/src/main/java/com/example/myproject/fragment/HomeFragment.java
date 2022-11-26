@@ -13,6 +13,7 @@ import androidx.core.widget.NestedScrollView;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.room.Room;
 import androidx.viewpager2.widget.ViewPager2;
 
 import android.util.Log;
@@ -30,12 +31,16 @@ import com.example.myproject.Adapter.CategoryAdapter;
 import com.example.myproject.Adapter.ImageSliderAdapter;
 import com.example.myproject.Adapter.PopularAdapter;
 import com.example.myproject.Domain.CategoryDomain;
+import com.example.myproject.Domain.Entitt;
 import com.example.myproject.Domain.PopularDomain;
+import com.example.myproject.Helper.Databasee;
+import com.example.myproject.Interface.Daoo;
 import com.example.myproject.Interface.NotifyingScrollView;
 import com.example.myproject.R;
 import com.google.android.material.appbar.AppBarLayout;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -62,6 +67,8 @@ public class HomeFragment extends Fragment {
     Toolbar toolbar;
     int i;
     AppBarLayout appBarLayout;
+    Databasee databasee;
+    Daoo daoo;
 
     public HomeFragment() {
         // Required empty public constructor
@@ -118,7 +125,13 @@ public class HomeFragment extends Fragment {
         //                .build();
         // ex) firebase에서 데이터 가져오기
 
-        ArrayList<CategoryDomain> category = new ArrayList<>();
+        databasee = Room.databaseBuilder(getContext(), Databasee.class, "ee").build();
+        daoo = (Daoo) databasee.getDaoo();
+        List<Entitt> list = daoo.getAll();
+
+
+
+        /*ArrayList<CategoryDomain> category = new ArrayList<>();
         category.add(new CategoryDomain("game","game_icon"));
         category.add(new CategoryDomain("exercise","exercise_icon"));
         category.add(new CategoryDomain("drinking","drinking_icon"));
@@ -127,7 +140,7 @@ public class HomeFragment extends Fragment {
         category.add(new CategoryDomain("cafe","cafe_icon"));
 
         adapter = new CategoryAdapter(category);
-        view1.setAdapter(adapter);
+        view1.setAdapter(adapter);*/
 
         // popular 리사이클러뷰
         LinearLayoutManager linearLayoutManager2 = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL,false);

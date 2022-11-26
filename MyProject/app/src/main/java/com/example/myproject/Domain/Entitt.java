@@ -1,8 +1,10 @@
 package com.example.myproject.Domain;
 
 import androidx.room.ColumnInfo;
+import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
+@Entity(tableName = "Entitt")
 public class Entitt {
 
     @PrimaryKey(autoGenerate = true)

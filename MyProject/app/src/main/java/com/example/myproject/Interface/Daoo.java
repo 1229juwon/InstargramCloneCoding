@@ -13,7 +13,7 @@ import java.util.List;
 
 @Dao
 public interface Daoo {
-    //@Query("SELECT * FROM Entitt")
+    @Query("SELECT * FROM Entitt")
     List<Entitt> getAll();
 
     @Insert
